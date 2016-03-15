@@ -1,0 +1,5 @@
+#!/bin/bash
+# infer-gopath.sh
+
+pwd
+export GOROOT=$HOME/go 
