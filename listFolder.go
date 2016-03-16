@@ -66,9 +66,10 @@ func NewFile(input string){
     if err != nil {
         log.Fatal(err)
     }
-    log.Println(newFile)
+
     newFile.Close()
-    FileInfo()
+    Write(input)
+    //FileInfo()
 }
 func Write(text string){
   f, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0600)
@@ -78,7 +79,7 @@ func Write(text string){
 
   defer f.Close()
 
-  if _, err = f.WriteString("\n"+text); err != nil {
+  if _, err = f.WriteString(text+"\n"); err != nil {
       panic(err)
   }
 }
@@ -100,7 +101,7 @@ func FileExists() bool{
   fileInfo, err := os.Stat(filename)
     if err != nil {
         if os.IsNotExist(err) {
-            log.Fatal("File does not exist.")
+            //log.Fatal("File does not exist.")
             return false
         }
     }
