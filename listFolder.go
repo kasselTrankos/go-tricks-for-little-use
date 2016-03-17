@@ -6,6 +6,7 @@ package main
 
 import (
     "./file"
+    "./snif"
   "bufio"
   "fmt"
   "os"
@@ -14,9 +15,29 @@ import (
 )
 
 const inputdelimiter = '\n'
+func main(){
+  fmt.Print(`Que hacer :
+    1: Analysis
+    2: File
 
+    Introduce 1 o 2 y pulsa ENTER: `)
+  reader := bufio.NewReader(os.Stdin)
+	result, _, err := reader.ReadRune()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+  switch result {
+  case '1':
+    snif.Sniff()
+    break
+  case '2':
+      Route()
+    break
+  }
+}
 
-func main() {
+func Route() {
   fmt.Print(`Introduce la ruta que quieres leer:`)
   reader := bufio.NewReader(os.Stdin)
   input, err := reader.ReadString(inputdelimiter)
